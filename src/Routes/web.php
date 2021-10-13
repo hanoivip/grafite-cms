@@ -31,7 +31,7 @@
          * Internal APIs
          * --------------------------------------------------------------------------
         */
-        Route::group(['middleware' => 'auth'], function () use ($routePrefix) {
+        Route::group([], function () use ($routePrefix) {
             Route::group(['prefix' => 'cms/api'], function () {
                 Route::get('images/list', 'ImagesController@apiList');
                 Route::post('images/store', 'ImagesController@apiStore');

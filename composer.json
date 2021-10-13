@@ -1,5 +1,5 @@
 {
-    "name": "hanoivip/cms",
+    "name": "hanoivip/grafite-cms",
     "description": "Add a CMS to any Laravel app/website to gain control of: pages, blogs, galleries, events, custom modules, images and more.",
     "license": "MIT",
     "authors": [

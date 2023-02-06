@@ -23,7 +23,7 @@
                         @endif
                     </div>
                     <div class="card-body">
-                    {!! str_limit($blog->entry->plain(), 300) !!}
+                    {!! \Illuminate\Support\Str::limit($blog->entry->plain(), 300) !!}
                     </div>
                 </div>
             @endforeach

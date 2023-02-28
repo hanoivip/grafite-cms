@@ -3,7 +3,6 @@
 namespace Grafite\Cms\Services;
 
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
@@ -135,11 +134,11 @@ class ValidationService
     private function getInput($key, $jsonInput)
     {
         if ($jsonInput) {
-            $input = Input::json($key);
-        } elseif (Input::file($key)) {
-            $input = Input::file($key);
+            $input = Request::json($key);
+        } elseif (Request::file($key)) {
+            $input = Request::file($key);
         } else {
-            $input = Input::get($key);
+            $input = Request::get($key);
         }
 
         return $input;
@@ -155,15 +154,15 @@ class ValidationService
     private function inputsArray($jsonInput)
     {
         if ($jsonInput) {
-            $inputs = Input::json();
+            $inputs = Request::json();
         } else {
-            $inputs = Input::all();
+            $inputs = Request::all();
 
             // Don't send the token back
             unset($inputs['_token']);
 
             foreach ($inputs as $key => $value) {
-                if (Input::file($key)) {
+                if (Request::file($key)) {
                     unset($inputs[$key]);
                 }
             }

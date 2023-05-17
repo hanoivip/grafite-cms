@@ -4,6 +4,7 @@ namespace Grafite\Cms\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Str;
 
 class RssController extends GrafiteCmsController
 {
@@ -15,7 +16,7 @@ class RssController extends GrafiteCmsController
 
         $url = $request->segment(1) ?? 'page';
 
-        $this->module = str_singular($url);
+        $this->module = $url; //str_singular($url);
 
         if (! empty($this->module)) {
             $this->repo = app('Grafite\Cms\Repositories\\'.ucfirst($this->module).'Repository');
